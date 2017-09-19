@@ -38,8 +38,10 @@ a:hover {
     flex: 5;
 }
 
-.links {
-    padding: 5px;
+
+.links:hover {
+    background: #e3e3e3;
+    transition: all 250ms ease;
 }
 
 #flex-nav li {
