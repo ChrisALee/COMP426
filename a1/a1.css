@@ -61,7 +61,7 @@ a:hover {
     border-bottom: 1px solid red;
 }
 
-#content {
+#bottom {
     flex-grow 1;
     font-family: monospace;
 }
