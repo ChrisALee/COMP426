@@ -4,7 +4,7 @@ html {
 
 body {
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
     margin: 0px;
     display: flex;
     flex-direction: column;
@@ -23,6 +23,7 @@ a:hover {
 #flex-nav {
     background-color: #eee;
     flex-shrink: 0;
+    font-family: sans-serif;
 }
 
 #flex-nav ul {
@@ -62,7 +63,7 @@ a:hover {
 
 #content {
     flex-grow 1;
-    overflow-y: auto;
+    font-family: monospace;
 }
 
 @media all and (max-width: 550px) {
