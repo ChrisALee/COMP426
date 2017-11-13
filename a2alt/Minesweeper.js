@@ -133,7 +133,7 @@ function Board(width, height, numMines) {
 
     this.clearArea = (row, col) => {
         this.checkTile(row, col + 1);
-        this.checkTile(row, col - 1) == -5;
+        this.checkTile(row, col - 1);
         this.checkTile(row + 1, col + 1);
         this.checkTile(row + 1, col);
         this.checkTile(row + 1, col - 1);
@@ -155,7 +155,6 @@ function Board(width, height, numMines) {
             this.tileGrid[row][col] = -5;
             if (this.bombsNearbyGrid[row][col] == 0) {
                 this.clearArea(row, col);
-            } else {
             }
         }
     };
