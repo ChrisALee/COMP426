@@ -45,7 +45,6 @@ function Board(width, height, numMines) {
     this.tileGrid = [];
     this.bombsNearbyGrid = [];
     this.notFoundMines = numMines;
-    this.numCleared = 0;
     this.numPossibleClears = width * height - numMines;
 
     this.start = () => {
@@ -169,7 +168,7 @@ function Board(width, height, numMines) {
                 )
                     continue;
                 if (
-                    this.tileGrid[i][j] == -1 ||
+                    this.tileGrid[i][j] != -5 ||
                     this.bombsNearbyGrid[i][j] == -1 ||
                     $("button[row$='" + i + "'][col$='" + j + "']").attr(
                         'bomb',
@@ -181,7 +180,6 @@ function Board(width, height, numMines) {
                         'false',
                     );
                 } else if (this.tileGrid[i][j] == -5) {
-                    this.numCleared++;
                     $("button[row$='" + i + "'][col$='" + j + "']").attr(
                         'cleared',
                         'true',
@@ -192,7 +190,6 @@ function Board(width, height, numMines) {
                 }
             }
         }
-        console.log(this.tileGrid, this.bombsNearbyGrid);
     };
 
     this.tileClick = tile => {
@@ -200,7 +197,6 @@ function Board(width, height, numMines) {
         let col = $(tile).attr('col');
         row = parseInt(row);
         col = parseInt(col);
-        console.log(row, col);
         if (
             $(tile).attr('mark') == 'true' ||
             $(tile).attr('cleared') == 'true'
@@ -242,15 +238,15 @@ function Board(width, height, numMines) {
     };
 
     this.checkWin = () => {
-        console.log(
-            this.numCleared,
-            this.numPossibleClears,
-            this.notFoundMines,
-        );
-        if (
-            this.numCleared >= this.numPossibleClears &&
-            this.notFoundMines == 0
-        ) {
+        let numCl = 0;
+        for (i = 0; i < this.height; i++) {
+            for (j = 0; j < this.width; j++) {
+                if (this.tileGrid[i][j] == -5) {
+                    numCl++;
+                }
+            }
+        }
+        if (numCl >= this.numPossibleClears && this.notFoundMines == 0) {
             $('#board').empty();
             $('#bombs-left').empty();
             $('#board').append('<h1>You Win!</h1>');
