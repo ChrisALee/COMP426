@@ -1,0 +1,9 @@
+.board {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tile {
+    width: 12.5%;
+    box-sizing: border-box;
+}

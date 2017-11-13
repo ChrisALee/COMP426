@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minesweeper</title>
+        <link rel='stylesheet' type='text/css' href='./Minesweeper.css'>
+        <script src="./jquery-3.2.1.js"></script>
+        <script src="./Minesweeper.js"></script>
+    </head>
+    <body>
+        <div id="menu">
+            Grid width: <input id="g-width" type="number" min="8" max = "40" value="8">
+            Grid height: <input id="g-height" type="number" min="8" max="30" value="8">
+            Number of mines <input id="num-mines" type="number" min="1" value="1">
+            <button onclick="handleClick()">Start</button>
+        </div>
+        <div id="bombs-left"></div>
+        <div id="board"></div>
+    </body>
+</html>
