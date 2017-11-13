@@ -249,7 +249,7 @@ function Board(width, height, numMines) {
             this.notFoundMines,
         );
         if (
-            this.numCleared == this.numPossibleClears &&
+            this.numCleared >= this.numPossibleClears &&
             this.notFoundMines == 0
         ) {
             $('#board').empty();
