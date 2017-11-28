@@ -4,7 +4,7 @@ date_default_timezone_set('America/New_York');
 
 $connectionObject = new mysqli("classroom.cs.unc.edu", 
                    "clee5", 
-                   "Please51!", 
+                   "Pleasecraft41!", 
                    "clee5db");
                    
 $handle = fopen("a3-data.txt", "r");
