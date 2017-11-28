@@ -1,0 +1,19 @@
+Players
+        pid : INT, primary key
+        pfname : CHAR(25) first name of player
+        plname : CHAR(25) last name of player
+
+Events
+        eid : INT, primary key
+        td: ENUM('passing', 'rushing', 'fieldgoal'), type of touchdown
+        pfname : CHAR(25)
+        plname : CHAR(25)
+        qbfname : CHAR(25)
+        qblname : CHAR(25)
+
+Games
+        gid : INT, primary key
+        tname : CHAR(25)
+        otname : CHAR(25)
+        td: ENUM('passing', 'rushing', 'fieldgoal')
+        date: DATE, date of game
