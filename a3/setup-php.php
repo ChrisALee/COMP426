@@ -16,11 +16,15 @@ if ($handle) {
             "' . $connectionObject->real_escape_string($dataInfo[0]) . '",
             "' . $connectionObject->real_escape_string($dataInfo[1]) . '")'
          );
+         $pid = $connectionObject->query('SELECT p.pid FROM Players p
+         WHERE p.pfname =  "' . $connectionObject->real_escape_string($dataInfo[0]) . '"
+         AND p.plname = "' . $connectionObject->real_escape_string($dataInfo[1]) . '"
+         '
+         );
           $connectionObject->query('INSERT INTO Events
-             (td, pfname, plname) VALUES (
+             (td, pid) VALUES (
              "' . $connectionObject->real_escape_string($dataInfo[5]) . '",
-             "' . $connectionObject->real_escape_string($dataInfo[0]) . '",
-             "' . $connectionObject->real_escape_string($dataInfo[1]) . '")'
+             "' . $connectionObject->real_escape_string($pid) . '")'
           );
           $connectionObject->query('INSERT INTO Games
              (tname, otname, date) VALUES (
@@ -35,14 +39,18 @@ if ($handle) {
              "' . $connectionObject->real_escape_string($dataInfo[0]) . '",
              "' . $connectionObject->real_escape_string($dataInfo[1]) . '")'
           );
-          $connectionObject->query('INSERT INTO Events
-             (td, pfname, plname, qbfname, qblname) VALUES (
-             "' . $connectionObject->real_escape_string($dataInfo[5]) . '",
-             "' . $connectionObject->real_escape_string($dataInfo[0]) . '",
-             "' . $connectionObject->real_escape_string($dataInfo[1]) . '",
-             "' . $connectionObject->real_escape_string($dataInfo[0]) . '",
-             "' . $connectionObject->real_escape_string($dataInfo[1]) . '")'
+          $pid = $connectionObject->query('SELECT p.pid FROM Players p
+          WHERE p.pfname =  "' . $connectionObject->real_escape_string($dataInfo[0]) . '"
+          AND p.plname = "' . $connectionObject->real_escape_string($dataInfo[1]) . '"
+          '
           );
+           $connectionObject->query('INSERT INTO Events
+              (td, pid, qbfname, qblname) VALUES (
+              "' . $connectionObject->real_escape_string($dataInfo[5]) . '",
+              "' . $connectionObject->real_escape_string($pid) . '",
+              "' . $connectionObject->real_escape_string($dataInfo[0]) . '",
+              "' . $connectionObject->real_escape_string($dataInfo[1]) . '")'
+           );
           $connectionObject->query('INSERT INTO Games
              (tname, otname, date) VALUES (
              "' . $connectionObject->real_escape_string($dataInfo[2]) . '",
