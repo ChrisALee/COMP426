@@ -21,10 +21,11 @@ if ($handle) {
          AND p.plname = "' . $connectionObject->real_escape_string($dataInfo[1]) . '"
          '
          );
+         print($pid);
           $connectionObject->query('INSERT INTO Events
              (td, pid) VALUES (
              "' . $connectionObject->real_escape_string($dataInfo[5]) . '",
-             "' . $connectionObject->real_escape_string($pid) . '")'
+             "' . $connectionObject->real_escape_string((string)$pid) . '")'
           );
           $connectionObject->query('INSERT INTO Games
              (tname, otname, date) VALUES (
@@ -47,7 +48,7 @@ if ($handle) {
            $connectionObject->query('INSERT INTO Events
               (td, pid, qbfname, qblname) VALUES (
               "' . $connectionObject->real_escape_string($dataInfo[5]) . '",
-              "' . $connectionObject->real_escape_string($pid) . '",
+              "' . $connectionObject->real_escape_string((string)$pid) . '",
               "' . $connectionObject->real_escape_string($dataInfo[0]) . '",
               "' . $connectionObject->real_escape_string($dataInfo[1]) . '")'
            );
